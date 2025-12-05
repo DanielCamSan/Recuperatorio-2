@@ -32,7 +32,9 @@ namespace _3ecexamen.Controllers
         public async Task<IActionResult> GetSchedule(int id)
         {
             //TODO
-
+            var data = await _service.GetScheduleAsync(id);
+            if (data == null) return NotFound();
+            return Ok(data);
         }
 
         // POST: api/v1/speakers/talks
