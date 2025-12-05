@@ -21,7 +21,10 @@ namespace _3ecexamen.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateSpeakerDto dto)
         {
-            //TODO
+            //TODO : terminado
+            if (!ModelState.IsValid) return ValidationProblem(ModelState);
+            var speaker = await _sp.CreateAsync(dto);
+            return Ok();
         }
 
         // GET: api/v1/speakers/{id}/schedule
