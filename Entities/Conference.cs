@@ -10,9 +10,6 @@ namespace _3ecexamen.Entities
         public string City { get; set; } = default!;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-
-        //TODO
-        // 1:N Conference -> Rooms
-        
+        public ICollection<Room> Rooms { get; set; } // <-- Añadido para la relación 1:N
     }
 }

@@ -9,6 +9,7 @@ namespace _3ecexamen.Controllers
     public class ConferencesController : ControllerBase
     {
         private readonly IConferenceService _service;
+        
 
         public ConferencesController(IConferenceService service) => _service = service;
 
@@ -23,6 +24,15 @@ namespace _3ecexamen.Controllers
         // GET: api/v1/conferences/{id}/agenda
         [HttpGet("{id:int}/agenda")]
         public async Task<IActionResult> GetAgenda([FromRoute] int id)
+        {
+            var data = await _service.GetAgendaAsync(id);
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+
+        // GET: api/v1/conferences/{id}
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetDetails([FromRoute] int id)
         {
             var data = await _service.GetAgendaAsync(id);
             if (data == null) return NotFound();

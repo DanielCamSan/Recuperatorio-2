@@ -1,4 +1,5 @@
 ﻿using System;
+using _3ecexamen.DTOs;
 
 namespace _3ecexamen.Entities
 {

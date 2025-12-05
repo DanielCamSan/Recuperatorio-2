@@ -1,6 +1,7 @@
 ﻿using _3ecexamen.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Threading.Tasks;
 
 namespace _3ecexamen.Repositories
 {
@@ -9,9 +10,10 @@ namespace _3ecexamen.Repositories
         private readonly AppDbContext _ctx;
         public RoomRepository(AppDbContext ctx) => _ctx = ctx;
 
-        public Task<bool> ExistsAsync(int id)
+        public async Task<bool> ExistsAsync(int id)
         {
-            //TODO
+            // Verifica si existe una sala con el id proporcionado
+            return await _ctx.Rooms.AnyAsync(r => r.Id == id);
         }
     }
 }
