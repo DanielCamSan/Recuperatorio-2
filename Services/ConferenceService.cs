@@ -6,11 +6,16 @@ namespace _3ecexamen.Services
 {
     public class ConferenceService : IConferenceService
     {
-        //TODO
+        private readonly IConferenceRepository _conferences;
+
+        public ConferenceService(IConferenceRepository conferences) => _conferences = conferences;
 
         public async Task<int> CreateConferenceAsync(CreateConferenceDto dto)
         {
-            //TODO
+            var entity = new Conference { Title = dto.Title, City = dto.City, StartDate = dto.StartDate, EndDate = dto.EndDate };
+            await _conferences.AddAsync(entity);
+            await _conferences.SaveChangesAsync();
+            return entity.Id;
         }
 
         public async Task<ConferenceAgendaDto?> GetAgendaAsync(int id)
