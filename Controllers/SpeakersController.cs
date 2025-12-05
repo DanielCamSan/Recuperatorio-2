@@ -31,7 +31,9 @@ namespace _3ecexamen.Controllers
         [HttpGet("{id:int}/schedule")]
         public async Task<IActionResult> GetSchedule(int id)
         {
-            //TODO
+            //TODO tterminado
+            var schedule = await _sp.GetScheduleAsync(id);
+            return Ok(schedule);
         }
 
         // POST: api/v1/speakers/talks
