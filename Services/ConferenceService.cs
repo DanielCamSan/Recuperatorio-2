@@ -20,10 +20,24 @@ namespace _3ecexamen.Services
 
         public async Task<ConferenceAgendaDto?> GetAgendaAsync(int id)
         {
-            var conf = await _confs.GetAgendaAsync(id);
+            var conf = await _conferences.GetAgendaAsync(id);
             if (conf == null) return null;
             //TODO  pista: devuelve usando ConferenceAgendaDto
-           
+
+            return new ConferenceAgendaDto
+            {
+                Conference = conf.Title,
+                City = conf.City,
+                /*Rooms = conf.Rooms
+                    .Select(t => new Room
+                    {
+                        Id = conf.Id,
+                        Name = conf.Title,
+                        ConferenceId = t.ConferenceId,
+                        Conference = t.Conference
+
+                    }).ToList()*/
+            };
         }
     }
 }
