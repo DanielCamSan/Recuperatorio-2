@@ -25,6 +25,7 @@ namespace _3ecexamen.Services
             var conf = await _confs.GetAgendaAsync(id);
             if (conf == null) return null;
             //TODO  pista: devuelve usando ConferenceAgendaDto
+
            
         }
     }

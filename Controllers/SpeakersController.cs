@@ -15,6 +15,8 @@ namespace _3ecexamen.Controllers
         public async Task<IActionResult> Create([FromBody] CreateSpeakerDto dto)
         {
             //TODO
+            var created= await _3ecexamen.Services.ISpeakerService.CreateSpeakerAsync(dto);
+            return CreatedAtAction(nameof(GetSchedule), new { id = created }, new { id = created });
         }
 
         // GET: api/v1/speakers/{id}/schedule
@@ -22,6 +24,8 @@ namespace _3ecexamen.Controllers
         public async Task<IActionResult> GetSchedule(int id)
         {
             //TODO
+
+
         }
 
         // POST: api/v1/speakers/talks
@@ -29,6 +33,7 @@ namespace _3ecexamen.Controllers
         public async Task<IActionResult> AddTalk([FromBody] CreateTalkDto dto)
         {
             //TODO
+
         }
     }
 }
