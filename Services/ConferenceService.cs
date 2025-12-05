@@ -8,6 +8,7 @@ namespace _3ecexamen.Services
     {
         //TODO
         private readonly IConferenceRepository _confs;
+        public ConferenceService(IConferenceRepository confs) => _confs = confs;
 
         public async Task<int> CreateConferenceAsync(CreateConferenceDto dto)
         {
@@ -34,9 +35,8 @@ namespace _3ecexamen.Services
             {
                 Conference = conf.Title,
                 City = conf.City,
-                Rooms = conf.Rooms.Select(r => new RoomAgendaDto
+                Rooms = conf.Rooms.Select(r => new RoomScheduleDto
                 {
-                    Name = r.Name
                     Talks = r.Talks.OrderBy(t => t.StartTime).Select(t => new TalkDto
                     {
                         SpeakerId = t.SpeakerId,
