@@ -1,6 +1,6 @@
 ﻿dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package Microsoft.EntityFrameworkCore.Tools
-dotnet ef migrations add InitSqlite
+dotnet ef migrations add InitSqlitepatata
 dotnet ef database update
 
 # TecWebFest — Examen (90 minutos)

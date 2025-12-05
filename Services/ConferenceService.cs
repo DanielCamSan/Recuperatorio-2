@@ -28,15 +28,21 @@ namespace _3ecexamen.Services
             {
                 Conference = conf.Title,
                 City = conf.City,
-                /*Rooms = conf.Rooms
-                    .Select(t => new Room
+                Rooms = conf.Rooms
+                    .Select(t => new RoomScheduleDto
                     {
-                        Id = conf.Id,
-                        Name = conf.Title,
-                        ConferenceId = t.ConferenceId,
-                        Conference = t.Conference
-
-                    }).ToList()*/
+                        Room  = conf.Title,
+                        Talks = t.Talks
+                             .Select(tt => new TalkDto
+                             {
+                                 SpeakerId = t.Id,
+                                 Speaker = t.Name,
+                                 RoomId = tt.RoomId,
+                                 Room = tt.Room.Name,
+                                 StartTime = tt.StartTime,
+                                 EndTime = tt.EndTime
+                             }).ToList()
+                    }).ToList()
             };
         }
     }
