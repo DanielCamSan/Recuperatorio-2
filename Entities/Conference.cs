@@ -12,7 +12,7 @@ namespace _3ecexamen.Entities
         public DateTime EndDate { get; set; }
 
         //TODO
-        // 1:N Conference -> Rooms
+        // 1:N Conference -> Rooms  LISTO
         public ICollection<Room> Rooms { get; set; } = new List<Room>(); 
 
     }
