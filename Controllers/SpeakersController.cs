@@ -9,6 +9,14 @@ namespace _3ecexamen.Controllers
     public class SpeakersController : ControllerBase
     {
         //TODO  pista: usa speaker y talk service
+        private readonly ISpeakerService _speakerS;
+        private readonly ITalkService _talkS;
+
+        public SpeakersController(ISpeakerService speakerS, ITalkService talkS)
+        {
+            _speakerS = speakerS;
+            _talkS = talkS;
+        }
 
         // POST: api/v1/speakers
         [HttpPost]
