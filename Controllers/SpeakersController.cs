@@ -23,6 +23,8 @@ namespace _3ecexamen.Controllers
         public async Task<IActionResult> Create([FromBody] CreateSpeakerDto dto)
         {
             //TODO
+            var id = await _speakerS.CreateAsync(dto);
+            return Created($"api/v1/speakers/{id}", new { id });
         }
 
         // GET: api/v1/speakers/{id}/schedule
