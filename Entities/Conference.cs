@@ -13,7 +13,7 @@ namespace _3ecexamen.Entities
 
         //TODO
         // 1:N Conference -> Rooms
-        public ICollection<Room> Rooms { get; set; } = new List<Room>();
+        public ICollection<Room> Rooms { get; set; } = new List<Room>(); 
 
     }
 }
