@@ -37,6 +37,7 @@ namespace _3ecexamen.Services
                 City = conf.City,
                 Rooms = conf.Rooms.Select(r => new RoomScheduleDto
                 {
+
                     Talks = r.Talks.OrderBy(t => t.StartTime).Select(t => new TalkDto
                     {
                         SpeakerId = t.SpeakerId,
