@@ -8,7 +8,14 @@ namespace _3ecexamen.Controllers
     [Route("api/v1/[controller]")]
     public class SpeakersController : ControllerBase
     {
-        //TODO  pista: usa speaker y talk service
+        //TODO  pista: usa speaker y talk service : terminado
+        private readonly ISpeakerService _sp;
+        private readonly ITalkService _talk;
+        public SpeakersController(ISpeakerService sp, ITalkService talk)
+        {
+            _sp = sp;
+            _talk = talk;
+        }
 
         // POST: api/v1/speakers
         [HttpPost]
