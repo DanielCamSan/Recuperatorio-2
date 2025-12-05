@@ -40,7 +40,16 @@ namespace _3ecexamen.Controllers
         [HttpPost("talks")]
         public async Task<IActionResult> AddTalk([FromBody] CreateTalkDto dto)
         {
-            //TODO
+            //TODO terminado
+            try
+            {
+                await _talk.AddTalkAsync(dto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
         }
     }
 }
