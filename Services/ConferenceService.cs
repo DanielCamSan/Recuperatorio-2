@@ -15,9 +15,14 @@ namespace _3ecexamen.Services
             var conf = new Conference
             {
                 Title = dto.Title,
+                City = dto.City,
                 StartDate = dto.StartDate,
                 EndDate = dto.EndDate
+                
             };
+            await _confs.AddAsync(conf);
+            await _confs.SaveChangesAsync();
+            
         }
 
         public async Task<ConferenceAgendaDto?> GetAgendaAsync(int id)
@@ -25,8 +30,26 @@ namespace _3ecexamen.Services
             var conf = await _confs.GetAgendaAsync(id);
             if (conf == null) return null;
             //TODO  pista: devuelve usando ConferenceAgendaDto
+            return new ConferenceAgendaDto
+            {
+                Conference = conf.Title,
+                City = conf.City,
+                Rooms = conf.Rooms.Select(r => new RoomAgendaDto
+                {
+                    Name = r.Name
+                    Talks = r.Talks.OrderBy(t => t.StartTime).Select(t => new TalkDto
+                    {
+                        SpeakerId = t.SpeakerId,
+                        Speaker = t.Speaker.FullName,
+                        RoomId = t.RoomId,
+                        Room = t.Room.Name,
+                        StartTime = t.StartTime,
+                        EndTime = t.EndTime
+                    }).ToList()
+                }).ToList()
+            };
 
-           
+
         }
     }
 }
