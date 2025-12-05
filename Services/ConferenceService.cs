@@ -6,7 +6,7 @@ namespace _3ecexamen.Services
 {
     public class ConferenceService : IConferenceService
     {
-        //TODO: listo
+        //TODO: terminado
         private readonly IConferenceRepository _confs;
         public ConferenceService(IConferenceRepository confs)
         {
@@ -15,9 +15,22 @@ namespace _3ecexamen.Services
 
         public async Task<int> CreateConferenceAsync(CreateConferenceDto dto)
         {
-            //TODO
+            //TODO : terminado
+            var conference = new Conference
+            {
+                Title = dto.Title,
+                City = dto.City,
+                StartDate = dto.StartDate,
+                EndDate = dto.EndDate,
+                Rooms = dto.Rooms.Select(r => new Room
+                {
+                    Name = r.Name
+                }).ToList(),
+            };
+            await _confs.AddAsync(conference);
+            await _confs.SaveChangesAsync();
+            return conference.Id;
         }
-
         public async Task<ConferenceAgendaDto?> GetAgendaAsync(int id)
         {
             var conf = await _confs.GetAgendaAsync(id);
