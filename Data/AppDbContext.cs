@@ -18,7 +18,7 @@ namespace _3ecexamen.Data
         {
             //TODO
 
-            // 1:N Conference -> Rooms (FK requerida, cascade) : HECHO
+            // 1:N Conference -> Rooms (FK requerida, cascade) // terminado
             modelBuilder.Entity<Room>()
                 .HasOne(p => p.Conference)
                 .WithMany(c => c.Rooms)
