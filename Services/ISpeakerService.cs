@@ -6,5 +6,7 @@ namespace _3ecexamen.Services
     {
         Task<int> CreateAsync(CreateSpeakerDto dto);
         Task<SpeakerScheduleDto?> GetScheduleAsync(int id);
+        Task<int> AddTalkAsync(CreateTalkDto dto);
+
     }
 }

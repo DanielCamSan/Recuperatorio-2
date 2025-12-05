@@ -10,6 +10,11 @@ namespace _3ecexamen.Services
 
         public SpeakerService(ISpeakerRepository speakers) => _speakers = speakers;
 
+        public Task<int> AddTalkAsync(CreateTalkDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<int> CreateAsync(CreateSpeakerDto dto)
         {
             var entity = new Speaker { FullName = dto.FullName, TopicArea = dto.TopicArea };
